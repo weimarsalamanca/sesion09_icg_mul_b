@@ -1,0 +1,52 @@
+<canvas id='tablero' width=600 height=600></canvas>
+<script>
+   function recorte(arr){
+ctx.beginPath();
+ctx.moveTo(arr[0],arr[1]);
+for(var i = 2;i<arr.length;i+=2)
+     ctx.lineTo(arr[i],arr[i+1]);
+ctx.clip();
+}
+  function pentagono(cd,colorBorde,colorRelleno,grosor){
+ctx.beginPath();
+ctx.strokeStyle=colorBorde;
+ctx.fillStyle= colorRelleno;
+ctx.lineWidth=grosor;
+ctx.moveTo(cd[0],cd[1]);
+ctx.lineTo(cd[2],cd[3]);
+ctx.lineTo(cd[4],cd[5]);
+ctx.lineTo(cd[6],cd[7]);
+ctx.lineTo(cd[8],cd[9]);
+ctx.closePath();
+ctx.stroke();
+ctx.fill();
+}
+function rectangulo(cd,colorBorde,colorRelleno,grosor){
+ctx.beginPath();
+ctx.strokeStyle=colorBorde;
+ctx.fillStyle= colorRelleno;
+ctx.lineWidth=grosor;
+ctx.moveTo(cd[0],cd[1]);
+ctx.lineTo(cd[2],cd[3]);
+ctx.lineTo(cd[4],cd[5]);
+ctx.lineTo(cd[6],cd[7]);
+ctx.closePath();
+ctx.stroke();
+ctx.fill();
+}
+
+   var c=document.getElementById('tablero')
+   var ctx=c.getContext('2d')
+
+   var[rojo, azul, verde,blanco] = ['rgba(237,28,36)','rgba(0,162,232)','rgba(181,230,29)','rgba(255,255,255)'];
+   var recVerde = [11,142,546,237,544,288,3,190],penAzul=[148,141,343,3,539,141,465,367,223,367],penBlanco=[181,154,226,302,379,302,425,155,303,68];
+   pentagono(penAzul,azul,azul)
+   pentagono(penBlanco,blanco,blanco)
+   rectangulo(recVerde,verde,verde);
+   rectangulo([0,0,0,0,0,0,0,0],rojo,rojo);
+   ctx.beginPath();
+   ctx.arc(150, 150, 125, 0, Math.PI * 2, true);
+   ctx.arc(175, 160, 82, 0, Math.PI * 2, true);
+   ctx.fill('evenodd');
+  
+</script>
